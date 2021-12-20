@@ -1,0 +1,29 @@
+{
+  "name": "stock-market-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IdanMichael/stock-market-game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IdanMichael/stock-market-game/issues"
+  },
+  "homepage": "https://github.com/IdanMichael/stock-market-game#readme",
+  "dependencies": {
+    "concurrently": "^6.5.0",
+    "create-react-app": "^5.0.0",
+    "express": "^4.17.2",
+    "node-fetch": "^2.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

@@ -1,0 +1,17 @@
+.GridComponent {
+  display: inline-block;
+  border: 1px solid black;
+  padding: 28px;
+  font-family: monospace;
+}
+.red {
+  background-color: red;
+}
+.yellow {
+  background-color: yellow;
+}
+
+.App {
+  /* display: flex; */
+  text-align: center;
+}

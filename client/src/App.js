@@ -1,10 +1,10 @@
 import './App.css';
-import Comp from './components/customers';
+import BoardContainer from './components/BoardContainer';
 
 function App() {
   return (
     <div className="App">
-        <Comp></Comp>
+      <BoardContainer></BoardContainer>
     </div>
   );
 }

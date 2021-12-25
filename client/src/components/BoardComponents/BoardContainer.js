@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import GridComponent from "./GridComponent";
-import checkWinner from "../helper-functions/checkWinner";
+import checkWinner from "../../helper-functions/checkWinner";
 import {connect} from 'react-redux';
 
 const mapStateToProps = state => (

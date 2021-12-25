@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from 'react-redux';
-import { dropTile } from '../actions.js'
+import { dropTile } from '../../actions.js'
 const mapDispatchToProps = dispatch =>(
   {
     dropTile: (col) => dispatch(dropTile(col))

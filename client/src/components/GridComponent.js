@@ -14,6 +14,8 @@ const mapStateToProps = state => (
 
 class GridComponent extends Component {
 
+
+
   handleClick(col){
     this.props.dropTile(col);
   }
@@ -25,7 +27,7 @@ class GridComponent extends Component {
     const thisPiece = board[x][y];
 
     if(thisPiece){
-      if(thisPiece == 'red'){
+      if(thisPiece === 'red'){
         clss += ' red'
       }else {
         clss += ' yellow'

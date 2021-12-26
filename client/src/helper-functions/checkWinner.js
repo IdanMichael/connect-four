@@ -33,7 +33,6 @@ const boardParser = (board) => {
 }
 const rowChecker = (board) =>{
   const parsedBoard = boardParser(board);
-  console.log(parsedBoard)
   for(let i = 0; i < parsedBoard.length; i++){
     let stack = [];
     for(let j = 0; j < parsedBoard[i].length; j++){

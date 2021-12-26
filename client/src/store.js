@@ -1,6 +1,7 @@
 import { createStore } from 'redux';
 
 const initialState = {
+  turnsPlayed: 0,
   isRedTurn: true,
   board: [
     [],
@@ -22,6 +23,7 @@ function reducer (state = initialState,action){
     }
     newBoard[action.payload].push(colorDropped)
     return{
+      turnsPlayed: state.turnsPlayed + 1,
       board: newBoard,
       isRedTurn: !state.isRedTurn
     }

@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import GridComponent from "./GridComponent";
 import checkWinner from "../../helper-functions/checkWinner";
 import {connect} from 'react-redux';
+import ToLeaderBoard from "./ToLeaderBoard";
+import ToMatchHistory from "./ToMatchHistroy";
 
 const mapStateToProps = state => (
   {
@@ -28,6 +30,8 @@ class BoardContainer extends Component {
     return(
       <div className = "BoardContainer">
         {grid}
+        <ToLeaderBoard></ToLeaderBoard>
+        <ToMatchHistory></ToMatchHistory>
       </div>
     )
   }

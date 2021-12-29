@@ -5,7 +5,7 @@ const leaderBoardController = {};
 leaderBoardController.getLeaderBoard = async (req, res, next) => {
   // write code here
   
-  const getLeadersQuery = 'SELECT * FROM users LIMIT 10';
+  const getLeadersQuery = 'SELECT * FROM users ORDER BY wins DESC';
   res.locals.leaderBoard = await db.query(getLeadersQuery);
   
   if(!res.locals.leaderBoard){

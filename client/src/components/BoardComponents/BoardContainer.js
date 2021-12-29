@@ -6,13 +6,13 @@ import ToLeaderBoard from "./ToLeaderBoard";
 import ToMatchHistory from "./ToMatchHistroy";
 import postToServer from "../../helper-functions/postToServer";
 import impossibleBot from "../../helper-functions/impossibleBot";
-import { dropTile } from '../../actions.js'
-// import easyBot from "../../helper-functions/easybot";
+import { dropTile, resetBoard } from '../../actions.js'
 
 
 const mapDispatchToProps = dispatch =>(
   {
-    dropTile: (col) => dispatch(dropTile(col))
+    dropTile: (col) => dispatch(dropTile(col)),
+    resetBoard: () => dispatch(resetBoard())
   }
 )
 const mapStateToProps = state => (
@@ -23,8 +23,19 @@ const mapStateToProps = state => (
   }
 )
 class BoardContainer extends Component {
+  
   async componentDidUpdate (){
     let copyOfBoard = []
+
+    if(!this.props.isRedTurn){
+      for(let arr of this.props.board){
+        copyOfBoard.push(arr.slice())
+      }
+      const col = await impossibleBot(copyOfBoard)
+      this.props.dropTile(col)
+    }
+
+    copyOfBoard = []
     for(let arr of this.props.board){
       copyOfBoard.push(arr.slice())
     }
@@ -39,16 +50,10 @@ class BoardContainer extends Component {
       postToServer(redPlayer, yellowPlayer, this.props.turns, winner)
       alert('winner')
     }
-    if(!this.props.isRedTurn){
-      copyOfBoard = []
-      for(let arr of this.props.board){
-        copyOfBoard.push(arr.slice())
-      }
-      const col = await impossibleBot(copyOfBoard)
 
-      this.props.dropTile(col)
-    }
-  
+  }
+  handleClick () {
+    this.props.resetBoard()
   }
   render() {
     const grid = [];
@@ -61,11 +66,25 @@ class BoardContainer extends Component {
     }
     return(
       <div className = "BoardContainer">
-        <input type = 'text' id = 'redPlayerName'></input>
-        <input type = 'text' id = 'yellowPlayerName'></input>
-        {grid}
-        <ToLeaderBoard></ToLeaderBoard>
-        <ToMatchHistory></ToMatchHistory>
+        <h1>Connect Four</h1>
+        <div id = 'gridAndInputs'>
+          <span id = 'redPlayerInput'>
+            <input type = 'text' id = 'redPlayerName'></input>
+            <p>Red Player</p>
+          </span>
+          <div id = 'gridDiv'>
+           {grid}
+          </div>
+          <span id = 'redPlayerInput'>
+            <input type = 'text' id = 'yellowPlayerName'></input>
+            <p>Yellow Player</p>
+          </span>
+        </div>
+        <div id = 'navButtons'>
+          <ToLeaderBoard></ToLeaderBoard>
+          <button id = 'resetButton' className = 'navButton' onClick = {() => this.handleClick()}>Reset</button>
+          <ToMatchHistory></ToMatchHistory>
+        </div>
       </div>
     )
   }

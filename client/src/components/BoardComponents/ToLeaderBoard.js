@@ -5,8 +5,8 @@ const ToLeaderBoard = () => {
   const handleClick = () => history.push('/leader-board');
   
   return (
-    <button type="button" onClick={handleClick}>
-      Navigate to LeaderBoard
+    <button type="button" className = 'navButton' onClick={handleClick}>
+      Leaderboard
     </button>
   );
 };

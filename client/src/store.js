@@ -27,8 +27,21 @@ function reducer (state = initialState,action){
       board: newBoard,
       isRedTurn: !state.isRedTurn
     }
-    
-
+  }
+  if(action.type === 'RESET'){
+    return {
+      turnsPlayed: 0,
+      isRedTurn: true,
+      board: [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    }
   }
   return state
 }

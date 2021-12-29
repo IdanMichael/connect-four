@@ -35,7 +35,6 @@ class GridComponent extends Component {
     }
     return(
       <div className = {clss} onClick = {() => this.handleClick(this.props.x)}>
-        <p>{this.props.x}, {this.props.y}</p>
       </div>
     )
   }

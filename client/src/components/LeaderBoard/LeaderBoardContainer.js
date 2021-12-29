@@ -24,8 +24,9 @@ class LeaderBoardContainer extends Component {
   }
   render() {
     const users = [];
-    for(const user of this.state.userData){
-      users.push(<LeaderBoardPost rank = '1' name = {user.name}  wins = {user.wins} matches = {user.matches}></LeaderBoardPost>)
+    for(let i = 0; i < this.state.userData.length; i++){
+      const user = this.state.userData[i]
+      users.push(<LeaderBoardPost key = {i} rank = {i + 1} name = {user.name}  wins = {user.wins} matches = {user.matches}></LeaderBoardPost>)
     }
     return (
       <div className = "leaderBoard">

@@ -5,3 +5,8 @@ export const dropTile = (col) => {
     payload: col
   }
 }
+export const resetBoard = () => {
+  return{
+    type: 'RESET'
+  }
+}

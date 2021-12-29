@@ -1,9 +1,35 @@
+App {
+  font-family: sans-serif;
+}
 .GridComponent {
   display: inline-block;
-  border: 1px solid black;
-  padding: 28px;
+  border: 2px solid black;
+  padding: 45px;
   font-family: monospace;
+  font-size: 14px;
+  background-color: white;
+  border-radius: 100%;
+  margin: 4px;
+}
+#navButtons {
+  width: 50%;
+  margin: 0 auto;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  width: 714px;
+}
+.navButton {
+  padding: 10px;
+  background-color: rgb(61, 138, 254);
+  border-radius: 10%;
+  border-color: blue;
+  font-weight: 900;
+  color: black;
   font-size: 20px;
+  border-width: 1px;
+  box-shadow: 0;
+
 }
 .red {
   background-color: red;
@@ -11,13 +37,27 @@
 .yellow {
   background-color: yellow;
 }
-
+#gridDiv {
+  background-color: rgb(61, 138, 254);
+  border:solid;
+  border-color: blue;
+  border-width: 10px;
+}
 .App {
   /* display: flex; */
   text-align: center;
   white-space: nowrap;
 }
+.PlayerInput {
+  display: flex;
+  align-items: center;
+}
+#gridAndInputs {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 
+}
 .leaderBoardHeader p {
   display: inline;
 }

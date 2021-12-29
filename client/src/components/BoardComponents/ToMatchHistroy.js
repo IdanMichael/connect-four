@@ -5,8 +5,8 @@ const ToMatchHistory = () => {
   const handleClick = () => history.push('/match-history');
   
   return (
-    <button type="button" onClick={handleClick}>
-      Navigate to Match History
+    <button type="button" className = 'navButton' onClick={handleClick}>
+      Match History
     </button>
   );
 };

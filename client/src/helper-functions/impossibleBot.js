@@ -18,6 +18,7 @@ const apiBoardParser = (board) => {
 const findMax = (fetchedObj) => {
   let max = 0
   for(const score in fetchedObj){
+    
     max = fetchedObj[score] > fetchedObj[max] ? score : max
   }
   return max
@@ -28,6 +29,7 @@ const impossibleBot = async (board) => {
   const col = fetch(`http://kevinalbs.com/connect4/back-end/index.php/getMoves?board_data=${parsedBoard}&player=2`)
   .then(res => res.json())
   .then(data => {
+    console.log(data)
     return findMax(data)
     })
   return col

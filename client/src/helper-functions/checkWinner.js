@@ -18,7 +18,7 @@ const colChecker = (board) => {
   }
   return false
 }
-const boardParser = (board) => {
+export const boardParser = (board) => {
   //fills out blank tiles in board for winner checking purposes 
   let newBoard = [];
   for(const arr of board){
@@ -62,6 +62,7 @@ const leftDiagonalChecker = (board) => {
     let stack = [];
     while(j + i < 7){
       if(parsedBoard[6 - j][j + i] === 'noTile'){
+        stack = []
         j++
         continue
       }
@@ -83,6 +84,7 @@ const leftDiagonalChecker = (board) => {
     let stack = [];
     while(j + i < 7){
       if(parsedBoard[6 - j - i][j] === 'noTile'){
+        stack = []
         j++
         continue
       }
@@ -109,6 +111,7 @@ const rightDiagonalChecker = (board) => {
     let stack = [];
     while(j + i < 7){
       if(parsedBoard[j][j + i] === 'noTile'){
+        stack = []
         j++
         continue
       }
@@ -130,6 +133,7 @@ const rightDiagonalChecker = (board) => {
     let stack = [];
     while(j + i < 7){
       if(parsedBoard[j + i][j] === 'noTile'){
+        stack = []
         j++
         continue
       }

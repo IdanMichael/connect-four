@@ -21,6 +21,20 @@ class MatchHistorySearch extends Component {
       })
     })
   }
+  handleClick () {
+    console.log('clicked')
+    let searchedPlayer = document.getElementById('matchHistorySearchInput').value
+    if(searchedPlayer === ''){return}
+    let fetchedMatches = []
+    fetch(`/matches/player-history/${searchedPlayer}`)
+    .then(res => res.json())
+    .then(data => {
+      fetchedMatches = data
+      this.setState({
+        matchData: fetchedMatches
+      })
+    })
+  }
   render() {
     const matches = [];
     for(const match of this.state.matchData){
@@ -37,8 +51,8 @@ class MatchHistorySearch extends Component {
     return (
       <div className = "matchHistorySearch">
         <div id = 'matchHistorySearchBar'>
-          <input className = "matchHistorySearchInput"></input>
-          <button id = 'matchHistroySearchButton' >Search Player</button>
+          <input id = "matchHistorySearchInput"></input>
+          <button id = 'matchHistroySearchButton' onClick = {() => this.handleClick()}>Search Player</button>
         </div>
         <ul className = "leaderBoardHeader">
           <p>RedPlayer</p>
@@ -48,7 +62,6 @@ class MatchHistorySearch extends Component {
           <p>Date</p>
         </ul>    
         {matches}
-        <h1>test</h1>
       </div>
     )
   }

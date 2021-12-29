@@ -7,6 +7,10 @@ router.post('/new-match', matchController.addMatch,(req, res) => {
     res.status(200).json(res.locals.updatedUser)
   }
 );
+router.get('/player-history/:name', matchController.playerHistory,
+
+  (req, res) => res.status(200).json(res.locals.playerHistory.rows)
+);
 router.get('/match-history', matchController.matchHistory,
 
   (req, res) => res.status(200).json(res.locals.matchHistory.rows)

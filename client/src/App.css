@@ -3,6 +3,7 @@
   border: 1px solid black;
   padding: 28px;
   font-family: monospace;
+  font-size: 20px;
 }
 .red {
   background-color: red;

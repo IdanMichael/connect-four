@@ -14,7 +14,6 @@ matchController.addMatch = async (req, res, next) => {
 
   let redWinsAdd = 0
   let yellowWinsAdd = 0
-  console.log(winner)
   if(winner === 'red'){
     redWinsAdd++
   }else{
@@ -55,11 +54,23 @@ matchController.addMatch = async (req, res, next) => {
 };
 
 matchController.matchHistory = async (req,res,next) => {
- 
-  const matchHistory = 'SELECT * FROM matches LIMIT 10';
+  const matchHistory = 'SELECT * FROM matches ORDER BY match_id ASC';
   res.locals.matchHistory = await db.query(matchHistory);
   
   if(!res.locals.matchHistory){
+    return next({
+      log: 'res.locals.matchHistory was not able to retreive data in matchHistory controller', 
+      error: 'Was not able to retrieve match history'
+    });
+  }
+  next();
+  
+}
+matchController.playerHistory = async (req,res,next) => {
+  
+  const playerHistoryQuery = 'SELECT * FROM matches WHERE yellow_player = $1 or red_player = $1LIMIT 15';
+  res.locals.playerHistory = await db.query(playerHistoryQuery,[req.params.name]);
+  if(!res.locals.playerHistory){
     return next({
       log: 'res.locals.matchHistory was not able to retreive data in matchHistory controller', 
       error: 'Was not able to retrieve match history'

@@ -1,6 +1,6 @@
 
-const postToServer = async (yellowPlayer,redPlayer,turns,winner) => {
-  const response = await fetch('/add-match', {
+const postToServer = async (redPlayer,yellowPlayer,turns,winner) => {
+  const response = await fetch('/matches/new-match', {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
     mode: 'cors', // no-cors, *cors, same-origin
     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached

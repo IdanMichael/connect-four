@@ -15,20 +15,26 @@ const mapStateToProps = state => (
   }
 )
 class BoardContainer extends Component {
-  componentDidUpdate(){
+  componentDidUpdate (){
     let copyOfBoard = []
     for(let arr of this.props.board){
       copyOfBoard.push(arr.slice())
     }
     if(checkWinner(copyOfBoard)){
+      let redPlayer = document.getElementById('redPlayerName').value
+      let yellowPlayer = document.getElementById('yellowPlayerName').value
+
+      if(redPlayer === ''){ redPlayer = 'guest'}
+      if(yellowPlayer === ''){ yellowPlayer = 'guest'}
+      
       const winner = this.props.isRedsTurn ? 'yellow' : 'red'
-      console.log(postToServer('YellowPlayer', 'RedPlayer', this.props.turns, winner))
+      postToServer(redPlayer, yellowPlayer, this.props.turns, winner)
       alert('winner')
     }
   }
   render() {
     const grid = [];
-    for(let y = 5; y >= 0; y--){
+    for(let y = 6; y >= 0; y--){
       const row = [];
       for(let x = 0; x < 7; x++){
         row.push(<GridComponent x = {x} y = {y} key = {x}></GridComponent>)
@@ -37,6 +43,8 @@ class BoardContainer extends Component {
     }
     return(
       <div className = "BoardContainer">
+        <input type = 'text' id = 'redPlayerName'></input>
+        <input type = 'text' id = 'yellowPlayerName'></input>
         {grid}
         <ToLeaderBoard></ToLeaderBoard>
         <ToMatchHistory></ToMatchHistory>

@@ -8,8 +8,8 @@ class LeaderBoardPost extends Component {
         <ul className = "leaderBoardHeader">
           <p>{this.props.rank}</p>
           <p>{this.props.name}</p>
-          <p>{this.props.moves}</p>
-          <p>{this.props.opponentName}</p>
+          <p>{this.props.wins}</p>
+          <p>{this.props.matches}</p>
         </ul>
       </div>
     )

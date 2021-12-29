@@ -57,10 +57,10 @@ const rowChecker = (board) =>{
 
 const leftDiagonalChecker = (board) => {
   const parsedBoard = boardParser(board);
-  for(let i = 0; i < 3; i++){
+  for(let i = 0; i < 4; i++){
     let j = 0; 
     let stack = [];
-    while(j + i < 6){
+    while(j + i < 7){
       if(parsedBoard[6 - j][j + i] === 'noTile'){
         j++
         continue
@@ -104,10 +104,10 @@ const leftDiagonalChecker = (board) => {
 
 const rightDiagonalChecker = (board) => {
   const parsedBoard = boardParser(board);
-  for(let i = 0; i < 3; i++){
+  for(let i = 0; i < 4; i++){
     let j = 0;
     let stack = [];
-    while(j + i < 6){
+    while(j + i < 7){
       if(parsedBoard[j][j + i] === 'noTile'){
         j++
         continue

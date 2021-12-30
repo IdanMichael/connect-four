@@ -70,7 +70,37 @@ App {
   margin: 0;
 
 }
+.leaderBoard { 
+  margin-left: 20px;
+  margin-right: 20px;
+}
 
-.leaderBoardTitle {
-  border-style: solid;
+.columnContainer { 
+  display: flex;
+  justify-content: space-around;
+}
+.odds{
+  margin: 0;
+  padding: 10px;
+}
+.evens{
+  background-color: rgba(61, 138, 254, 0.164);
+  margin: 0;
+  padding: 10px;
+}
+.highlighted {
+  color: black;
+}
+.winner {
+  color: rgb(3, 94, 3);
+  font-weight: 500;
+
+}
+.loser { 
+  color: red;
+  font-weight: 500;
+  
+}
+#matchHistorySearchBar {
+  margin-top: 50px;
 }

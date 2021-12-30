@@ -1,6 +1,4 @@
 import React, {Component} from "react";
-import LeaderBoardPost from "./LeaderBoardPost";
-
 
 class LeaderBoardContainer extends Component {
   constructor() {
@@ -23,21 +21,45 @@ class LeaderBoardContainer extends Component {
     })
   }
   render() {
-    const users = [];
+    const ranks = [];
+    ranks.push(<h2>Rank</h2>)
+    const names = [];
+    names.push(<h2>Names</h2>) 
+    const wins = []; 
+    wins.push(<h2>Wins</h2>)
+    const matches = [];
+    let count = 0;
+    matches.push(<h2>Matches</h2>)
     for(let i = 0; i < this.state.userData.length; i++){
+      let classes = ''
+      if(count%2 === 0){classes+= 'evens'}
+      else{classes+= 'odds'}
+
       const user = this.state.userData[i]
-      users.push(<LeaderBoardPost key = {i} rank = {i + 1} name = {user.name}  wins = {user.wins} matches = {user.matches}></LeaderBoardPost>)
+      ranks.push(<p key = {i} className = {classes}>{i + 1}</p>)
+      names.push(<p key = {i} className = {classes}>{user.name}</p>) 
+      wins.push(<p key = {i} className = {classes}>{user.wins}</p>)
+      matches.push(<p key =  {i} className = {classes}>{user.matches}</p>)
+
+      count++
     }
     return (
       <div className = "leaderBoard">
-        <div className = "leaderBoardTitle">LeaderBoard</div>
-        <ul className = "leaderBoardHeader">
-          <p>Rank</p>
-          <p>Name</p>
-          <p>Wins</p>
-          <p>Matches</p>
-        </ul>
-        {users}
+        <h1 className = "leaderBoardTitle">LeaderBoard</h1>
+        <div className = 'columnContainer'>
+          <div>
+            {ranks}
+          </div>
+          <div>
+            {names}
+          </div>
+          <div>
+            {wins}  
+          </div>
+          <div>
+            {matches}
+          </div>
+        </div>
       </div>
     )
   }

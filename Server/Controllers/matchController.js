@@ -54,7 +54,7 @@ matchController.addMatch = async (req, res, next) => {
 };
 
 matchController.matchHistory = async (req,res,next) => {
-  const matchHistory = 'SELECT * FROM matches ORDER BY match_id ASC';
+  const matchHistory = 'SELECT * FROM matches ORDER BY match_id DESC';
   res.locals.matchHistory = await db.query(matchHistory);
   
   if(!res.locals.matchHistory){
@@ -68,7 +68,7 @@ matchController.matchHistory = async (req,res,next) => {
 }
 matchController.playerHistory = async (req,res,next) => {
   
-  const playerHistoryQuery = 'SELECT * FROM matches WHERE yellow_player = $1 or red_player = $1LIMIT 15';
+  const playerHistoryQuery = 'SELECT * FROM matches WHERE yellow_player = $1 or red_player = $1 ORDER BY match_id DESC';
   res.locals.playerHistory = await db.query(playerHistoryQuery,[req.params.name]);
   if(!res.locals.playerHistory){
     return next({

@@ -23,11 +23,20 @@ const mapStateToProps = state => (
   }
 )
 class BoardContainer extends Component {
-  
-  async componentDidUpdate (){
-    let copyOfBoard = []
+  constructor() {
+    super();
+    
+    this.state = {
+      winner: false
+    };
 
-    if(!this.props.isRedTurn){
+  }
+  async componentDidUpdate (){
+    let yellowPlayer = document.getElementById('yellowPlayerName').value
+    let copyOfBoard = []
+    console.log(this.state.winner)
+
+    if(!this.props.isRedTurn && yellowPlayer === 'bot' && !this.state.winner){
       for(let arr of this.props.board){
         copyOfBoard.push(arr.slice())
       }
@@ -39,16 +48,18 @@ class BoardContainer extends Component {
     for(let arr of this.props.board){
       copyOfBoard.push(arr.slice())
     }
-    if(checkWinner(copyOfBoard)){
+    if(checkWinner(copyOfBoard) && !this.state.winner){
+      this.setState({
+        winner: true
+      })
       let redPlayer = document.getElementById('redPlayerName').value
-      let yellowPlayer = document.getElementById('yellowPlayerName').value
 
       if(redPlayer === ''){ redPlayer = 'guest'}
       if(yellowPlayer === ''){ yellowPlayer = 'guest'}
       
       const winner = this.props.isRedTurn ? 'yellow' : 'red'
       postToServer(redPlayer, yellowPlayer, this.props.turns, winner)
-      alert('winner')
+      alert(winner + ' won')
     }
 
   }

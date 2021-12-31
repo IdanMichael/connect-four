@@ -23,20 +23,11 @@ const mapStateToProps = state => (
   }
 )
 class BoardContainer extends Component {
-  constructor() {
-    super();
-    
-    this.state = {
-      winner: false
-    };
-
-  }
   async componentDidUpdate (){
     let yellowPlayer = document.getElementById('yellowPlayerName').value
     let copyOfBoard = []
-    console.log(this.state.winner)
 
-    if(!this.props.isRedTurn && yellowPlayer === 'bot' && !this.state.winner){
+    if(!this.props.isRedTurn && yellowPlayer === 'bot'){
       for(let arr of this.props.board){
         copyOfBoard.push(arr.slice())
       }
@@ -48,10 +39,7 @@ class BoardContainer extends Component {
     for(let arr of this.props.board){
       copyOfBoard.push(arr.slice())
     }
-    if(checkWinner(copyOfBoard) && !this.state.winner){
-      this.setState({
-        winner: true
-      })
+    if(checkWinner(copyOfBoard)){
       let redPlayer = document.getElementById('redPlayerName').value
 
       if(redPlayer === ''){ redPlayer = 'guest'}

@@ -1,8 +1,9 @@
+const password = require('./passfolder/password.js')
 const Pool = require ("pg").Pool
 
 const pool = new Pool ({
   user: "postgres",
-  password:"Xmm71717",
+  password: password,
   port: 5432,
   database: "connectFour"
 })
